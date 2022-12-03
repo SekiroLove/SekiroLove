@@ -1,0 +1,41 @@
+//电话号码的字母组合
+
+class Solution {
+public:
+ vector<string> res;
+    string s;
+    void backtricking (int index,string digits){
+        if(digits.size()==s.size()){
+            res.push_back(s);
+            return;
+        }
+         string tmp=letterMap[digits[index]-'0'];
+         66
+        for(int i=0;i<tmp.size();i++){          
+           
+            s.push_back(tmp[i]);
+            backtricking(index+1,digits);
+            s.pop_back();
+        }
+    }
+    vector<string> letterCombinations(string digits) {
+         if (digits.size() == 0) {
+            return res;
+        }
+        backtricking(0,digits);
+        return res;
+    }
+    private:
+        const string letterMap[10] = {
+            "", // 0
+            "", // 1
+            "abc", // 2
+            "def", // 3
+            "ghi", // 4
+            "jkl", // 5
+            "mno", // 6
+            "pqrs", // 7
+            "tuv", // 8
+            "wxyz", // 9
+        };
+};
